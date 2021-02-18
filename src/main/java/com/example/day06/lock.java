@@ -13,12 +13,12 @@ public class lock {
         lockTest();
     }
     public static void lockTest() {
-//        ReentrantLock reentrantLock = new ReentrantLock(true);
-//        reentrantLock.lock();
-//        reentrantLock.unlock();
-//       synchronized (object ){
-//           System.out.println("test");
-//       }
+        ReentrantLock reentrantLock = new ReentrantLock(true);
+        reentrantLock.lock();
+        reentrantLock.unlock();
+       synchronized (object ){
+           System.out.println("test");
+       }
         Thread thread = new Thread(){
 
             @Override
