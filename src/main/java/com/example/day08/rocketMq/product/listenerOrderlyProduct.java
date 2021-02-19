@@ -70,19 +70,20 @@ public class listenerOrderlyProduct {
     }
 
     private static void sendsMessage(DefaultMQProducer producer,Integer orderId) throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
-        for (int i = 0; i < 400; i++) {
+        for (int i = 0; i < 100; i++) {
             try {
                 Message msg = new Message("test-topic-linster","tag1",String.valueOf(i),String.valueOf(orderId).getBytes());
-                SendResult sendResult = producer.send(msg, new MessageQueueSelector() {
-                    @Override
-                    public MessageQueue select(List<MessageQueue> mqs, Message msg, Object arg) {
-                        Integer id = (Integer) arg;
-                        int index = id % mqs.size();
-                        System.out.println(index);
-                        System.out.println("队列得到长度："+mqs.toString());
-                        return mqs.get(index);
-                    }
-                },orderId);
+//                SendResult sendResult = producer.send(msg, new MessageQueueSelector() {
+//                    @Override
+//                    public MessageQueue select(List<MessageQueue> mqs, Message msg, Object arg) {
+//                        Integer id = (Integer) arg;
+//                        int index = id % mqs.size();
+//                        System.out.println(index);
+//                        System.out.println("队列得到长度："+mqs.toString());
+//                        return mqs.get(index);
+//                    }
+//                },orderId);
+                SendResult sendResult = producer.send(msg);
                 System.out.println(sendResult.toString()+orderId);
             }catch (Exception e){
                 e.printStackTrace();

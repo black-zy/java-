@@ -35,22 +35,22 @@ public class rocketMqConsumer {
             Date date2 = new Date();
             @Override
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> list, ConsumeConcurrentlyContext consumeConcurrentlyContext) {
-//                for (MessageExt msg: list){
-//                        System.out.println("queueId:"+msg.getQueueId()+",orderId:"+new String(msg.getBody())+",i:"+msg.getKeys());
-//
-//                }
-//                long end = System.currentTimeMillis();
-//                System.out.println("耗时："+(end-start));
-                if(date1 == null)
-                    date1 = new Date();
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                for (MessageExt msg: list){
+                        System.out.println("queueId:"+msg.getQueueId()+",orderId:"+new String(msg.getBody())+",i:"+msg.getKeys());
+
                 }
-                System.out.println("totalTime:"+totalTime);
-                date2 = new Date();
-                totalTime = (date2.getTime() - date1.getTime());
+                long end = System.currentTimeMillis();
+                //System.out.println("耗时："+(end-start));
+//                if(date1 == null)
+//                    date1 = new Date();
+//                try {
+//                    Thread.sleep(100);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                System.out.println("totalTime:"+totalTime);
+//                date2 = new Date();
+//                totalTime = (date2.getTime() - date1.getTime());
                 return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
             }
         });

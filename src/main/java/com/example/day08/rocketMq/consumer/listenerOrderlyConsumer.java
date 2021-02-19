@@ -35,23 +35,23 @@ public class listenerOrderlyConsumer {
             @Override
             public ConsumeOrderlyStatus consumeMessage(List<MessageExt> msgs, ConsumeOrderlyContext context) {
 //                context.setAutoCommit(false);
-//                long start = System.currentTimeMillis();
-//                for (MessageExt msg : msgs) {
-//                    System.out.println("queueId:"+msg.getQueueId()+",orderId:"+new String(msg.getBody())+",i:"+msg.getKeys());
-//                }
-//                long end = System.currentTimeMillis();
-//                long total = end-start;
-//                System.out.println(total++);
-                if(date1 == null)
-                    date1 = new Date();
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                long start = System.currentTimeMillis();
+                for (MessageExt msg : msgs) {
+                    System.out.println("queueId:"+msg.getQueueId()+",orderId:"+new String(msg.getBody())+",i:"+msg.getKeys());
                 }
-                System.out.println("totalTime:"+totalTime);
-                date2 = new Date();
-                totalTime = (date2.getTime() - date1.getTime());
+                long end = System.currentTimeMillis();
+                long total = end-start;
+                System.out.println(total++);
+//                if(date1 == null)
+//                    date1 = new Date();
+//                try {
+//                    Thread.sleep(100);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                System.out.println("totalTime:"+totalTime);
+//                date2 = new Date();
+//                totalTime = (date2.getTime() - date1.getTime());
 
                 return ConsumeOrderlyStatus.SUCCESS;
             }
